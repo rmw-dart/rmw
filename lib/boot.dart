@@ -1,5 +1,6 @@
 import 'objectbox.g.dart';
-import 'db.dart';
+import 'db/user.dart';
+
 import "package:path/path.dart" show join;
 import 'dart:io' show Directory;
 
@@ -9,13 +10,11 @@ import 'dart:io';
 import 'dart:math';
 
 Future<InternetAddress> ip() async {
-  InternetAddress result;
-
   int code = Random().nextInt(255);
   var dgSocket = await RawDatagramSocket.bind(InternetAddress.anyIPv4, 0);
   dgSocket.readEventsEnabled = true;
   dgSocket.broadcastEnabled = true;
-  final ret = dgSocket.timeout(Duration(milliseconds: 200), onTimeout: (sink) {
+  final ret = dgSocket.timeout(Duration(milliseconds: 100), onTimeout: (sink) {
     sink.close();
   }).expand<InternetAddress>((event) {
     if (event == RawSocketEvent.read) {
