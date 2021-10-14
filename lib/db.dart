@@ -4,4 +4,5 @@ import 'package:objectbox/objectbox.dart';
 class User {
   int id = 0;
   String? name;
+  User({this.name});
 }

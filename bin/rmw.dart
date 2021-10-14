@@ -21,7 +21,6 @@ void main(List<String> arguments) async {
     return;
   }
 
-
   final root = config['dir']??
       join(
           Platform.environment['HOME'] ??
