@@ -5,6 +5,6 @@ node_modules/
 objectbox.g.dart
 
 build/
-.db/
+bin/data/
 download
 bin/*.exe
