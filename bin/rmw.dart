@@ -6,6 +6,7 @@ import 'package:rmw/boot.dart';
 import 'package:rmw/version.dart' show packageVersion;
 import 'package:args/args.dart' show ArgParser;
 
+
 void main(List<String> arguments) async {
 
   final args = ArgParser();
@@ -20,7 +21,14 @@ void main(List<String> arguments) async {
     return;
   }
 
-  final root = config['dir']??join(dirname(Platform.script.toFilePath()),'data');
+
+  final root = config['dir']??
+      join(
+          Platform.environment['HOME'] ??
+          Platform.environment['USERPROFILE'] ??
+          dirname(Platform.script.toFilePath()),
+          '.rmw'
+      );
 
   await boot(
       root
