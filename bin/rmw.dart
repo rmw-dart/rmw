@@ -2,15 +2,20 @@
 
 import "package:path/path.dart" show dirname, join;
 import 'dart:io' show Platform;
-import 'package:rmw/main.dart';
+import 'package:rmw/boot.dart';
+import 'package:args/args.dart' show ArgParser;
 
 void main(List<String> arguments) {
-  final fp = Platform.script.toFilePath();
+  final args = ArgParser();
+  args.addFlag("workdir", abbr: 'd');
+  final config = args.parse(arguments);
+  print(config);
 
+  final fp = Platform.script.toFilePath();
   var root = dirname(fp);
 
 
-  Main(
-      join(root,"db")
+  boot(
+      join(root,"data")
   );
 }
