@@ -7,9 +7,5 @@ class User {
 
   late String name;
 
-  @Index()
-  late String ip;
-
   User({required this.name});
 }
-

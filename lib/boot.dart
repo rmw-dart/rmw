@@ -3,36 +3,11 @@ import 'db/user.dart';
 
 import "package:path/path.dart" show join;
 import 'dart:io' show Directory;
+import 'package:intranet_ip/intranet_ip.dart';
 
-import 'dart:core';
-import 'dart:async';
-import 'dart:io';
-import 'dart:math';
-
-Future<InternetAddress> ip() async {
-  int code = Random().nextInt(255);
-  var dgSocket = await RawDatagramSocket.bind(InternetAddress.anyIPv4, 0);
-  dgSocket.readEventsEnabled = true;
-  dgSocket.broadcastEnabled = true;
-  final ret = dgSocket.timeout(Duration(milliseconds: 100), onTimeout: (sink) {
-    sink.close();
-  }).expand<InternetAddress>((event) {
-    if (event == RawSocketEvent.read) {
-      final dg = dgSocket.receive();
-      if (dg != null && dg.data.length == 1 && dg.data[0] == code) {
-        dgSocket.close();
-        return [dg.address];
-      }
-    }
-    return [];
-  }).first;
-
-  dgSocket.send([code], InternetAddress("255.255.255.255"), dgSocket.port);
-  return ret;
-}
 
 Future<void> boot(String root) async {
-  print((await ip()).rawAddress);
+  print((await intranetIpv4()).rawAddress);
 
   await Directory(root).create(recursive: true);
 
