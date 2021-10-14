@@ -8,3 +8,4 @@ objectbox.g.dart
 build/
 .db/
 download
+bin/*.exe
