@@ -33,7 +33,7 @@ Future<InternetAddress> ip() async {
 }
 
 Future<void> boot(String root) async {
-  print(await ip());
+  print((await ip()).rawAddress);
 
   await Directory(root).create(recursive: true);
 
