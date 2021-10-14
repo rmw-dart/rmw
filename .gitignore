@@ -1,10 +1,9 @@
-# Files and directories created by pub.
+node_modules/
 .dart_tool/
 .packages
 
 objectbox.g.dart
 
-# Conventional directory for build output.
 build/
 .db/
 download

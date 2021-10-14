@@ -1,0 +1,7 @@
+targets:
+  $default:
+    builders:
+      build_version:
+        options:
+          output: lib/version.dart
+
