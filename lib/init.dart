@@ -35,6 +35,7 @@ Future<void> init(String root) async {
   }
 
   udp.listen((e) {
+    // ignore: exhaustive_cases
     switch (e) {
       case RawSocketEvent.read:
         udp.writeEventsEnabled = true;
