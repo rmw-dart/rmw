@@ -1,7 +1,12 @@
 import 'dart:math';
 import "package:path/path.dart" show join;
 import 'dart:io'
-    show Directory, RawDatagramSocket, InternetAddress, SocketException;
+    show
+        Directory,
+        RawDatagramSocket,
+        InternetAddress,
+        SocketException,
+        RawSocketEvent;
 
 import 'package:upnp_port_forward/init.dart' show UpnpPortForwardDaemon;
 
@@ -30,12 +35,24 @@ Future<void> init(String root) async {
   }
 
   udp.listen((e) {
-    print("e ${e.toString()}");
-    final dg = udp.receive();
-    if (dg != null) {
-      for (var i in dg.data) {
-        print(">> $i");
-      }
+    switch (e) {
+      case RawSocketEvent.read:
+        udp.writeEventsEnabled = true;
+
+        print("e ${e.toString()}");
+        final dg = udp.receive();
+        if (dg != null) {
+          for (var i in dg.data) {
+            print(">> $i");
+          }
+        }
+        break;
+      case RawSocketEvent.write:
+        // udpSocket.send( new Utf8Codec().encode('Hello from client'), clientAddress, port);
+        break;
+      case RawSocketEvent.closed:
+        print('Client disconnected.');
+        break;
     }
   });
 
