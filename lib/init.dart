@@ -29,6 +29,16 @@ Future<void> init(String root) async {
     break;
   }
 
+  udp.listen((e) {
+    print(e.toString());
+    final dg = udp.receive();
+    if (dg != null) {
+      for (var i in dg.data) {
+        print(i);
+      }
+    }
+  });
+
   UpnpPortForwardDaemon('rmw.link', (protocol, port, state) {
     print("upnp port mapped : $protocol $port $state");
   })
