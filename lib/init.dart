@@ -1,23 +1,33 @@
-import 'objectbox.g.dart';
-import 'db/user.dart';
-
+import 'dart:math';
 import "package:path/path.dart" show join;
 import 'dart:io'
     show Directory, RawDatagramSocket, InternetAddress, SocketException;
+
 import 'package:upnp_port_forward/init.dart' show UpnpPortForwardDaemon;
+
+import 'objectbox.g.dart';
+import 'db/user.dart';
 
 Future<void> init(String root) async {
   late final RawDatagramSocket udp;
 
-  try {
-    udp = await RawDatagramSocket.bind(InternetAddress.anyIPv4, 0);
-  } on SocketException catch (e) {
-    print(e.osError);
-    print(e.osError?.errorCode);
-    return;
-  }
+  //final port = Random().nextInt(30000) + 20000;
+  var port = 20001;
 
-  final port = udp.port;
+  while (true) {
+    try {
+      udp = await RawDatagramSocket.bind(InternetAddress.anyIPv4, port);
+    } on SocketException catch (e) {
+      print(e.osError);
+      if (e.osError?.errorCode == 48) {
+        // Address already in use
+        ++port;
+        continue;
+      }
+      rethrow;
+    }
+    break;
+  }
 
   UpnpPortForwardDaemon('rmw.link', (protocol, port, state) {
     print("upnp port mapped : $protocol $port $state");
