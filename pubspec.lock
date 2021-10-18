@@ -29,6 +29,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.8.2"
+  await_sleep:
+    dependency: transitive
+    description:
+      name: await_sleep
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
   build:
     dependency: transitive
     description:
@@ -231,7 +238,7 @@ packages:
       name: json_annotation
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.2.0"
+    version: "4.3.0"
   lints:
     dependency: "direct dev"
     description:
@@ -295,6 +302,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0"
+  petitparser:
+    dependency: transitive
+    description:
+      name: petitparser
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.4.0"
   pool:
     dependency: transitive
     description:
@@ -320,6 +334,13 @@ packages:
     dependency: transitive
     description:
       name: random_uint8list
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.2"
+  req:
+    dependency: transitive
+    description:
+      name: req
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
@@ -393,6 +414,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
+  try_catch:
+    dependency: transitive
+    description:
+      name: try_catch
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.2"
   typed_data:
     dependency: transitive
     description:
@@ -400,6 +428,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.0"
+  upnp_port_forward:
+    dependency: "direct main"
+    description:
+      name: upnp_port_forward
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.4"
   watcher:
     dependency: transitive
     description:
@@ -414,6 +449,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
+  xml:
+    dependency: transitive
+    description:
+      name: xml
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.3.1"
   yaml:
     dependency: transitive
     description:
@@ -422,4 +464,4 @@ packages:
     source: hosted
     version: "3.1.0"
 sdks:
-  dart: ">=2.14.3 <3.0.0"
+  dart: ">=2.15.0-178.1.beta <3.0.0"
