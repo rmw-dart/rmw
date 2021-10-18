@@ -4,7 +4,7 @@ version: 0.0.1
 homepage: https://rmw.link
 
 environment:
-  sdk: '>=2.15.0-1.1.beta <3.0.0'
+  sdk: '>=2.15.0 <3.0.0'
 
 dependencies: 
   intranet_ip: ^1.0.2
