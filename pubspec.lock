@@ -212,7 +212,7 @@ packages:
     source: hosted
     version: "4.0.0"
   intranet_ip:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: intranet_ip
       url: "https://pub.dartlang.org"
@@ -344,6 +344,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
+  rmwlog:
+    dependency: transitive
+    description:
+      name: rmwlog
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
   shelf:
     dependency: transitive
     description:
@@ -434,7 +441,7 @@ packages:
       name: upnp_port_forward
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.6"
+    version: "1.0.7"
   watcher:
     dependency: transitive
     description:
