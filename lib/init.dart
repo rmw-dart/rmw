@@ -30,11 +30,11 @@ Future<void> init(String root) async {
   }
 
   udp.listen((e) {
-    print(e.toString());
+    print("e ${e.toString()}");
     final dg = udp.receive();
     if (dg != null) {
       for (var i in dg.data) {
-        print(i);
+        print(">> $i");
       }
     }
   });
