@@ -2,7 +2,7 @@
 
 import "package:path/path.dart" show dirname, join;
 import 'dart:io' show Platform;
-import 'package:rmw/boot.dart';
+import 'package:rmw/init.dart';
 import 'package:rmw/version.dart' show packageVersion;
 import 'package:args/args.dart' show ArgParser;
 
@@ -26,5 +26,5 @@ void main(List<String> arguments) async {
               dirname(Platform.script.toFilePath()),
           '.rmw');
 
-  await boot(root);
+  await init(root);
 }

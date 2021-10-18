@@ -5,8 +5,7 @@ import "package:path/path.dart" show join;
 import 'dart:io' show Directory;
 import 'package:intranet_ip/intranet_ip.dart';
 
-
-Future<void> boot(String root) async {
+Future<void> init(String root) async {
   print((await intranetIpv4()).rawAddress);
 
   await Directory(root).create(recursive: true);
