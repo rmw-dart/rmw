@@ -26,7 +26,7 @@ Future<void> init(String root) async {
   try {
     lock(join(root, "udp.$port.lock"));
   } on FileSystemException catch (e) {
-    log(e.message, e.path);
+    loge(e.message, e.path);
     exit(1);
   }
 
