@@ -16,7 +16,8 @@ import 'db/user.dart';
 Future<void> init(String root) async {
   final port = 20000; //Random().nextInt(40000) + 20000;
 
-  final udp = await RawDatagramSocket.bind(InternetAddress.anyIPv4, port);
+  final udp = await RawDatagramSocket.bind(InternetAddress.anyIPv4, port,
+      reusePort: false);
 
   udp.listen((e) {
     // ignore: exhaustive_cases
