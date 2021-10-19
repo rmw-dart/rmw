@@ -343,14 +343,14 @@ packages:
       name: req
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.2"
+    version: "1.0.3"
   rmwlog:
     dependency: "direct main"
     description:
       name: rmwlog
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.4"
+    version: "1.0.5"
   settings_yaml:
     dependency: "direct main"
     description:
