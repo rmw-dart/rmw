@@ -1,4 +1,4 @@
-import "package:path/path.dart" show join;
+import 'package:path/path.dart' show join;
 import 'dart:io';
 import 'package:rmwlog/init.dart';
 import 'dart:async';
@@ -37,7 +37,6 @@ Future<void> init(String root) async {
   for (final i in all) {
     log(i.id, i.name);
   }
-
   final exitSignal = [ProcessSignal.sigint];
   if (!Platform.isWindows) {
     exitSignal.add(ProcessSignal.sigterm);
