@@ -1,27 +1,37 @@
 import 'dart:math';
 import "package:path/path.dart" show join;
-import 'dart:io'
-    show
-        Directory,
-        RawDatagramSocket,
-        InternetAddress,
-        SocketException,
-        RawSocketEvent;
-
+import 'dart:io';
 import 'package:upnp_port_forward/init.dart' show UpnpPortForwardDaemon;
 import 'package:rmwlog/init.dart';
 import 'objectbox.g.dart';
+import 'dart:async';
+import 'package:settings_yaml/settings_yaml.dart';
+
 import 'db/user.dart';
+import 'lock.dart';
 
 Future<void> init(String root) async {
-  final port = 20000; //Random().nextInt(40000) + 20000;
+  final dirLock = join(root, 'lock');
+  await Directory(dirLock).create(recursive: true);
 
-  final udp = await RawDatagramSocket.bind(InternetAddress.anyIPv4, port,
-      reusePort: false);
-  final udp2 = await RawDatagramSocket.bind(InternetAddress.anyIPv4, port,
-      reusePort: false);
+  final config = SettingsYaml.load(pathToSettings: join(root, 'config.yml'));
+
+  final configPort = config['port'] ?? 0;
+  final udp = await RawDatagramSocket.bind(InternetAddress.anyIPv4, configPort);
+  final port = udp.port;
+  if (port != configPort) {
+    config['port'] = port;
+    config.save();
+  }
+
+  try {
+    lock(join(dirLock, "udp.$port"));
+  } on FileSystemException catch (e) {
+    log(e.message, e.path);
+    exit(1);
+  }
+
   print(udp);
-  print(udp2);
 
   udp.listen((e) {
     // ignore: exhaustive_cases
@@ -53,8 +63,6 @@ Future<void> init(String root) async {
     ..run();
 
   log(udp.port);
-
-  await Directory(root).create(recursive: true);
 
   final store = openStore(directory: join(root, "box"));
 
