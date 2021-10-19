@@ -62,8 +62,6 @@ Future<void> init(String root) async {
     ..udp(udp.port)
     ..run();
 
-  log(udp.port);
-
   final store = openStore(directory: join(root, "box"));
 
   final box = store.box<User>();
