@@ -28,8 +28,6 @@ Future<void> init(String root) async {
     exit(1);
   }
 
-  print(udp);
-
   udp.listen((e) {
     // ignore: exhaustive_cases
     switch (e) {
@@ -62,9 +60,12 @@ Future<void> init(String root) async {
   initDb(join(root, "box"));
   final box = store.box<User>();
   final user = User(name: 'good');
-  log(box.put(user));
 
-  for (final i in box.getAll()) {
+  final all = box.getAll();
+  if (all.length < 5) {
+    log('put', box.put(user));
+  }
+  for (final i in all) {
     log(i.id, i.name);
   }
 
