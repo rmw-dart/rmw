@@ -59,7 +59,6 @@ Future<void> init(String root) async {
     ..udp(udp.port)
     ..run();
 
-  /*
   initDb(join(root, "box"));
   final box = store.box<User>();
   final user = User(name: 'good');
@@ -68,7 +67,6 @@ Future<void> init(String root) async {
   for (final i in box.getAll()) {
     log(i.id, i.name);
   }
-  */
 
   final exitSignal = [ProcessSignal.sigint];
   if (!Platform.isWindows) {
