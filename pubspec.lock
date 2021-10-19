@@ -345,12 +345,19 @@ packages:
     source: hosted
     version: "1.0.2"
   rmwlog:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: rmwlog
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.2"
+    version: "1.0.4"
+  settings_yaml:
+    dependency: "direct main"
+    description:
+      name: settings_yaml
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.6"
   shelf:
     dependency: transitive
     description:
@@ -442,6 +449,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.8"
+  uuid:
+    dependency: transitive
+    description:
+      name: uuid
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.5"
   watcher:
     dependency: transitive
     description:
