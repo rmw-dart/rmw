@@ -11,8 +11,6 @@ import 'lock.dart';
 
 Future<void> init(String root) async {
   await Directory(root).create(recursive: true);
-
-  initDb(join(root, "box"));
   final config = SettingsYaml.load(pathToSettings: join(root, 'config.yml'));
 
   final configPort = config['port'] ?? 0;
@@ -61,6 +59,8 @@ Future<void> init(String root) async {
     ..udp(udp.port)
     ..run();
 
+  /*
+  initDb(join(root, "box"));
   final box = store.box<User>();
   final user = User(name: 'good');
   log(box.put(user));
@@ -68,6 +68,7 @@ Future<void> init(String root) async {
   for (final i in box.getAll()) {
     log(i.id, i.name);
   }
+  */
 
   for (var hook in [ProcessSignal.sigint, ProcessSignal.sigterm]) {
     hook.watch().listen((signal) {
