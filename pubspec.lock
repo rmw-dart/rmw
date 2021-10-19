@@ -273,7 +273,7 @@ packages:
       name: mime
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.1"
   objectbox:
     dependency: "direct main"
     description:
@@ -350,7 +350,7 @@ packages:
       name: rmwlog
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.1"
+    version: "1.0.2"
   shelf:
     dependency: transitive
     description:
@@ -441,7 +441,7 @@ packages:
       name: upnp_port_forward
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.7"
+    version: "1.0.8"
   watcher:
     dependency: transitive
     description:
