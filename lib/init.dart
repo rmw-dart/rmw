@@ -68,5 +68,11 @@ Future<void> init(String root) async {
   for (final i in box.getAll()) {
     log(i.id, i.name);
   }
-  store.close();
+
+  for (var hook in [ProcessSignal.sigint, ProcessSignal.sigterm]) {
+    hook.watch().listen((signal) {
+      store.close();
+      exit(0);
+    });
+  }
 }
