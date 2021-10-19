@@ -7,6 +7,7 @@ import 'db.dart';
 import 'db/user.dart';
 import 'lock.dart';
 import 'udp.dart';
+import 'package:on_exit/init.dart';
 
 Future<void> init(String root) async {
   await Directory(root).create(recursive: true);
@@ -19,7 +20,7 @@ Future<void> init(String root) async {
     lock(join(root, "udp.$port.lock"));
   } on FileSystemException catch (e) {
     loge(e.message, e.path);
-    exit(1);
+    await onExit.exit(1);
   }
   if (port != configPort) {
     config['port'] = port;

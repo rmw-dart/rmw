@@ -1,5 +1,5 @@
 import 'objectbox.g.dart';
-import 'on_exit.dart';
+import 'package:on_exit/init.dart';
 
 late final Store store;
 

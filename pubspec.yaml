@@ -8,6 +8,7 @@ environment:
 
 dependencies: 
   objectbox: ^1.2.0
+  on_exit: ^1.0.0
   path: ^1.8.0
   rmwlog: ^1.0.10
   settings_yaml: ^3.0.6
