@@ -5,3 +5,7 @@
 
 bash <(curl -s https://raw.githubusercontent.com/objectbox/objectbox-dart/main/install.sh)
 
+安装 direnv
+
+go install github.com/direnv/direnv/v2@latest
+
