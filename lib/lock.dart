@@ -5,6 +5,6 @@ void lock(String fp) {
   final file = File(fp);
   file.openSync(mode: FileMode.write).lockSync();
   onExit(() {
-    file.deleteSync();
+    if (file.existsSync()) file.deleteSync();
   });
 }
