@@ -18,6 +18,10 @@ Future<void> init(String root) async {
 
   final udp = await RawDatagramSocket.bind(InternetAddress.anyIPv4, port,
       reusePort: false);
+  final udp2 = await RawDatagramSocket.bind(InternetAddress.anyIPv4, port,
+      reusePort: false);
+  print(udp);
+  print(udp2);
 
   udp.listen((e) {
     // ignore: exhaustive_cases
