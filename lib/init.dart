@@ -1,4 +1,3 @@
-import 'dart:math';
 import "package:path/path.dart" show join;
 import 'dart:io';
 import 'package:upnp_port_forward/init.dart' show UpnpPortForwardDaemon;
