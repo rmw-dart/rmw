@@ -436,7 +436,7 @@ packages:
     source: hosted
     version: "1.0.0"
   try_catch:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: try_catch
       url: "https://pub.dartlang.org"

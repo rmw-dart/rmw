@@ -11,6 +11,7 @@ dependencies:
   path: ^1.8.0
   rmwlog: ^1.0.10
   settings_yaml: ^3.0.6
+  try_catch: ^1.0.2
   upnp_port_forward: ^1.0.8
 
 dev_dependencies:

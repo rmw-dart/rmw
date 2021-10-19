@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:try_catch/init.dart';
 
 typedef Callback = FutureOr<void> Function();
 
@@ -8,7 +9,7 @@ class Exit {
 
   Future<void> operator -() async {
     for (var i in li) {
-      await i();
+      await tryCatch(i);
     }
   }
 }
