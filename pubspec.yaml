@@ -9,7 +9,7 @@ environment:
 dependencies: 
   objectbox: ^1.2.0
   path: ^1.8.0
-  rmwlog: ^1.0.7
+  rmwlog: ^1.0.8
   settings_yaml: ^3.0.6
   upnp_port_forward: ^1.0.8
 
