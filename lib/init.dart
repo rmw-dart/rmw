@@ -70,7 +70,12 @@ Future<void> init(String root) async {
   }
   */
 
-  for (var hook in [ProcessSignal.sigint, ProcessSignal.sigterm]) {
+  final exitSignal = [ProcessSignal.sigint];
+  if (!Platform.isWindows) {
+    exitSignal.add(ProcessSignal.sigterm);
+  }
+
+  for (var hook in exitSignal) {
     hook.watch().listen((signal) {
       store.close();
       exit(0);
