@@ -3,17 +3,16 @@ import "package:path/path.dart" show join;
 import 'dart:io';
 import 'package:upnp_port_forward/init.dart' show UpnpPortForwardDaemon;
 import 'package:rmwlog/init.dart';
-import 'objectbox.g.dart';
 import 'dart:async';
 import 'package:settings_yaml/settings_yaml.dart';
-
+import 'db.dart';
 import 'db/user.dart';
 import 'lock.dart';
 
 Future<void> init(String root) async {
-  final dirLock = join(root, 'lock');
-  await Directory(dirLock).create(recursive: true);
+  await Directory(root).create(recursive: true);
 
+  initDb(join(root, "box"));
   final config = SettingsYaml.load(pathToSettings: join(root, 'config.yml'));
 
   final configPort = config['port'] ?? 0;
@@ -25,7 +24,7 @@ Future<void> init(String root) async {
   }
 
   try {
-    lock(join(dirLock, "udp.$port"));
+    lock(join(root, "udp.$port.lock"));
   } on FileSystemException catch (e) {
     log(e.message, e.path);
     exit(1);
@@ -61,8 +60,6 @@ Future<void> init(String root) async {
   })
     ..udp(udp.port)
     ..run();
-
-  final store = openStore(directory: join(root, "box"));
 
   final box = store.box<User>();
   final user = User(name: 'good');
