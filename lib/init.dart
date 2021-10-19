@@ -7,6 +7,7 @@ import 'db.dart';
 import 'db/user.dart';
 import 'lock.dart';
 import 'udp.dart';
+import 'on_exit.dart';
 
 Future<void> init(String root) async {
   await Directory(root).create(recursive: true);
@@ -43,8 +44,8 @@ Future<void> init(String root) async {
   }
 
   for (var hook in exitSignal) {
-    hook.watch().listen((signal) {
-      store.close();
+    hook.watch().listen((signal) async {
+      await -onExit;
       exit(0);
     });
   }
