@@ -3,7 +3,8 @@ import 'package:rmwlog/init.dart';
 import 'package:upnp_port_forward/init.dart' show UpnpPortForwardDaemon;
 
 Future<RawDatagramSocket> udpSocket(int configPort) async {
-  final udp = await RawDatagramSocket.bind(InternetAddress.anyIPv4, configPort);
+  final udp = await RawDatagramSocket.bind(InternetAddress.anyIPv4, configPort,
+      reuseAddress: false);
 
   udp.listen((e) {
     // ignore: exhaustive_cases
